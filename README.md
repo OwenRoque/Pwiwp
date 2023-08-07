@@ -185,10 +185,15 @@ Se ha agregado el modelo de reacciones de publicaciones al proyecto para manejar
 + `date`: Un timestamp para registrar fecha y hora exacta de eventos.
 
 ### Servicio de Feed
-Se ha creado el servicio de feed para manejar la cronología de las publicaciones en la red social. Se agregaron las siguientes funciones relacionadas a reacciones:
+El servicio de feed se encarga de manejar funciones realacionadas a la cronología de las publicaciones en la red social. Se agregaron las siguientes funciones relacionadas a reacciones:
 - `createReaction(data)`:
 - `deleteReaction(data)`:
 - `ountReactionsByIdPublication(data)`:
 - `countReactionsByIdUser(data)`:
 
 ### Controlador de Feed
+Se agregaron las siguientes funciones relacionadas a reacciones en el controlador de Feed:
++ `createReaction(req, res)`:
++ `deleteReaction(req, res)`:
++ `countReactionsByIdPublication(req, res)`:
++ `countReactionsByIdPublicationAndIdUser(req, res)`:
