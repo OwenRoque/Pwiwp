@@ -179,8 +179,16 @@ async countReactionByUser(idpublication, iduser) {
 
 ### Modelo de Reacciones a Publicaciones
 Se ha agregado el modelo de reacciones de publicaciones al proyecto para manejar funciones respecto a las reacciones de una publicación. Incluye los siguientes atributos:
-+ ´id´: Una cadena que representa el ID único de una reacción.
-+ ´idpublication´: Un identificador que representa el ID único de una publicación.
-+ ´user_id´: Un identificador que representa el ID único del usuario.
-+ ´date´: Un timestamp para registrar fecha y hora exacta de eventos.
++ `id`: Una cadena que representa el ID único de una reacción.
++ `idpublication`: Un identificador que representa el ID único de una publicación.
++ `user_id`: Un identificador que representa el ID único del usuario.
++ `date`: Un timestamp para registrar fecha y hora exacta de eventos.
 
+### Servicio de Feed
+Se ha creado el servicio de feed para manejar la cronología de las publicaciones en la red social. Se agregaron las siguientes funciones relacionadas a reacciones:
+- `createReaction(data)`:
+- `deleteReaction(data)`:
+- `ountReactionsByIdPublication(data)`:
+- `countReactionsByIdUser(data)`:
+
+### Controlador de Feed
