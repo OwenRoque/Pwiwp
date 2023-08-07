@@ -1,17 +1,14 @@
 # Red Social PWIWP
 
 ## Descripción
-
 En este fork se estará trabajando sobre las funcionalidades respecto a las reacciones a publicaciones
 
 ## Tablero de Trello
-
 Puede seguir el progreso y planificación en [Tablero de Trello](https://trello.com/invite/b/niJLByP0/ATTI9e7870e3d9960cbf216433993eeebb357FFF3A43/pwiwp-tablero).
 
 ## Estilos de Programación
 
 ### Estilo 1: Aspect
-
 + El problema se descompone utilizando alguna forma de abstracción (procedimientos, funciones, objetos, etc.)
 + Los aspectos del problema se agregan al programa principal sin editar el código fuente de las abstracciones. Estas funciones secundarias se aferran a las abstracciones principales nombrándolas, como en "Soy un aspecto de foo (¡aunque puede que foo no lo sepa!)".
 
@@ -104,7 +101,6 @@ module.exports = FeedService;
 ## Clean Code
 
 ### CC1 - Comentarios
-
 + Intenta siempre explicarte en código.
 + No seas redundante.
 + No agregue ruido obvio.
@@ -148,7 +144,6 @@ async deleteReaction(idpublication, user_id) {
   }, // ...
   ```
 ### CC2 - Capitalize SQL Special Words
-
 + La interacción con la base de datos es una parte importante de la mayoría de las aplicaciones web. Si está escribiendo consultas SQL sin procesar, es una buena idea mantenerlas legibles también.
 + Aunque las palabras especiales de SQL y los nombres de funciones no distinguen entre mayúsculas y minúsculas, es una práctica común usar mayúsculas para distinguirlos de los nombres de tablas y columnas.
 
@@ -180,3 +175,12 @@ async countReactionByUser(idpublication, iduser) {
     });
   },
 ```
+## Características Actuales
+
+### Modelo de Reacciones a Publicaciones
+Se ha agregado el modelo de reacciones de publicaciones al proyecto para manejar funciones respecto a las reacciones de una publicación. Incluye los siguientes atributos:
++ ´id´: Una cadena que representa el ID único de una reacción.
++ ´idpublication´: Un identificador que representa el ID único de una publicación.
++ ´user_id´: Un identificador que representa el ID único del usuario.
++ ´date´: Un timestamp para registrar fecha y hora exacta de eventos.
+
