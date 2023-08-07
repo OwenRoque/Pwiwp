@@ -183,6 +183,7 @@ Se ha agregado el modelo de reacciones de publicaciones al proyecto para manejar
 + `idpublication`: Un identificador que representa el ID único de una publicación.
 + `user_id`: Un identificador que representa el ID único del usuario.
 + `date`: Un timestamp para registrar fecha y hora exacta de eventos.
+Se agregaron claves foráneas a los campos `idpublication` y `user_id` con los atribulos de los modelos existentes respectivos. ()
 
 ### Servicio de Feed
 El servicio de feed se encarga de manejar funciones realacionadas a la cronología de las publicaciones en la red social. Se agregaron las siguientes funciones relacionadas a reacciones:
