@@ -35,7 +35,7 @@ module.exports = {
         if (existingReaction.rows.length > 0) {
           // Si existe un registro, eliminarlo
           const deletedReaction = await connection.query(
-            "DELETE FROM reactions WHERE idpublication = $1 AND user_id = $2 RETURNING *",
+            "DELETE FROM reaction WHERE idpublication = $1 AND user_id = $2 RETURNING *",
             [idpublication, user_id]
           );
           connection.end();
@@ -54,6 +54,7 @@ module.exports = {
   },
   
   async count(idpublication) {
+    console.log('id',idpublication)
     return new Promise(async (resolve, reject) => {
       const connection = connectionDb();
   
@@ -63,27 +64,30 @@ module.exports = {
           "SELECT COUNT(*) AS count FROM reaction WHERE idpublication = $1",
           [idpublication]
         );
-  
+        //console.log('result.rows.length',result.rows.length)
+        //console.log('result.rows[0].count',result.rows[0].count)
         // El resultado de la consulta contiene una propiedad "rows" que tiene la cantidad total
         const totalCount = result.rows.length > 0 ? parseInt(result.rows[0].count) : 0;
-  
+        //console.log('totalCount',totalCount)
         connection.end();
         resolve(totalCount);
       } catch (err) {
-        console.error("Error while counting reactions", err);
+        //console.error("Error while counting reactions", err);
         connection.end();
         reject(null);
       }
     });
   },
   async countReactionByUser(idpublication, iduser) {
+    console.log('idpublication:',idpublication)
+    console.log('iduser:',iduser)
     return new Promise(async (resolve, reject) => {
       const connection = connectionDb();
   
       try {
         // Contar la cantidad de registros con el idpublication dado
         const result = await connection.query(
-          "SELECT COUNT(*) AS count FROM reaction WHERE idpublication = $1 AND id_user = $2",
+          "SELECT COUNT(*) AS count FROM reaction WHERE idpublication = $1 AND user_id = $2",
           [idpublication, iduser]
         );
   
@@ -91,6 +95,7 @@ module.exports = {
         const totalCount = result.rows.length > 0 ? parseInt(result.rows[0].count) : 0;
   
         connection.end();
+        console.log('totalCount',totalCount)
         resolve(totalCount);
       } catch (err) {
         console.error("Error while counting reactions", err);

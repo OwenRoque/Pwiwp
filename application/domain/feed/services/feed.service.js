@@ -50,6 +50,7 @@ class FeedService {
   }
 
   static async countReactionsByIdPublication(data) {
+    console.log('countReactionsByIdPublication',data)
     const reactionEntity = require("../entities/reaction.entity");
     const reactionResponse = await reactionEntity
       .count(data.idpublication)
@@ -60,13 +61,14 @@ class FeedService {
         );
         return null;
       });
-    return reactionResponse;
+      //console.log('reactionResponse',reactionResponse)
+    return {'count': reactionResponse};
   }
 
   static async countReactionsByIdUser(data) {
     const reactionEntity = require("../entities/reaction.entity");
     const reactionResponse = await reactionEntity
-      .countReactionByUser(data.idpublication, data.iduser)
+      .countReactionByUser(data.idpublication, data.user_id)
       .catch((e) => {
         console.error(
           "SERVICE ACCOUNT FEED: can't count reactions by idpublication and iduser",
@@ -74,7 +76,7 @@ class FeedService {
         );
         return null;
       });
-    return reactionResponse;
+    return { 'count': reactionResponse };
   }
 
 }
