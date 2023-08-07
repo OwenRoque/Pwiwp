@@ -101,3 +101,49 @@ class FeedService {
 
 module.exports = FeedService;
 ```
+## Clean Code
+
+### CC1 - Comentarios
+
++ Intenta siempre explicarte en código.
++ No seas redundante.
++ No agregue ruido obvio.
++ No use comentarios de llaves de cierre.
++ No comente el código. Solo elimina.
++ Utilizar como explicación de la intención.
++ Utilizar como aclaración de código.
++ Utilizar como advertencia de las consecuencias.
+
+```javascript
+async deleteReaction(idpublication, user_id) {
+    return new Promise(async (resolve, reject) => {
+      const connection = connectionDb();
+  
+      try {
+        // Verificar si existe un registro con la combinación de idpublication y user_id
+        const existingReaction = await connection.query(
+          "SELECT * FROM reaction WHERE idpublication = $1 AND user_id = $2",
+          [idpublication, user_id]
+        );
+  
+        if (existingReaction.rows.length > 0) {
+          // Si existe un registro, eliminarlo
+          const deletedReaction = await connection.query(
+            "DELETE FROM reaction WHERE idpublication = $1 AND user_id = $2 RETURNING *",
+            [idpublication, user_id]
+          );
+          connection.end();
+          resolve(deletedReaction.rows[0]);
+        } else {
+          // Si no existe un registro con la combinación dada, no hay nada que eliminar
+          connection.end();
+          resolve(null);
+        }
+      } catch (err) {
+        console.error("Error while deleting reaction", err);
+        connection.end();
+        reject(null);
+      }
+    });
+  }, // ...
+  ```
