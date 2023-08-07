@@ -1,0 +1,19 @@
+.profile
+    .row 
+        .col-md-12.text-center
+            .alert.alert-dark(role='alert')
+                .input-group
+                    textarea.form-control(aria-label='With textarea' placeholder="Publicar algo" id="publication-content")
+                    button.btn.btn-outline-secondary(type='button' onclick="publish()") Publicar
+    .row 
+        .col#publications
+            -for(let i=0;i<10;i++){
+                .row.mt-2
+                    .col-md-12.text-center.border.rounded-3.placeholder-glow 
+                        span.placeholder.col-7
+                        span.placeholder.col-4
+                        span.placeholder.col-4
+                        span.placeholder.col-6
+                        span.placeholder.col-8
+
+            -}

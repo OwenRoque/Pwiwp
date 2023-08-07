@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  .row.justify-content-center
+    .col-md-4.mt-5.text-center 
+        h1 Ingresar
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text Email
+            input.form-control(type='text' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="login-email")
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text Password
+            input.form-control(type='password' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="login-password")
+        button.btn.btn-dark.mt-2(type='button' onclick="login()") Ingresar
+        hr
+        p 
+            | No tengo cuenta, quiero 
+            a(href="/register") registrarme
+
+
+
+            
+        

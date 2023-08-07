@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .row.justify-content-center
+    .col-md-4.mt-5.text-center 
+        h1 Registrarme
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text Email
+            input.form-control(type='text' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="register-email")
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text NickName
+            input.form-control(type='text' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="register-nickname")
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text Name
+            input.form-control(type='text' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="register-name")
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text LastName
+            input.form-control(type='text' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="register-lastname")
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text Password
+            input.form-control(type='password' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="register-password")
+        .input-group.input-group-lg.mt-2
+            span#inputGroup-sizing-lg.input-group-text Confirmar Password
+            input.form-control(type='password' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-lg' id="register-rpassword")
+        button.btn.btn-dark.mt-2(type='button' onclick="register()") Registrarme
+        hr
+        p 
+            | Ya Tengo cuenta, 
+            a(href="/") Iniciar Sesión
+
+
+
+            
+        

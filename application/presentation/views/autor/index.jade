@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  .row.mt-5 
+    .col-md-3 
+        include ../includes/profile
+        include ../includes/friends
+        include ../includes/notifications
+    .col-md-9.text-center 
+        include ../includes/publications
+    script.
+      window.addEventListener('load', function() {
+        getPublications();
+      });
+        
