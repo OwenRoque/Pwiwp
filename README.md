@@ -147,3 +147,36 @@ async deleteReaction(idpublication, user_id) {
     });
   }, // ...
   ```
+### CC2 - Capitalize SQL Special Words
+
++ La interacción con la base de datos es una parte importante de la mayoría de las aplicaciones web. Si está escribiendo consultas SQL sin procesar, es una buena idea mantenerlas legibles también.
++ Aunque las palabras especiales de SQL y los nombres de funciones no distinguen entre mayúsculas y minúsculas, es una práctica común usar mayúsculas para distinguirlos de los nombres de tablas y columnas.
+
+```javascript
+async countReactionByUser(idpublication, iduser) {
+    console.log('idpublication:',idpublication)
+    console.log('iduser:',iduser)
+    return new Promise(async (resolve, reject) => {
+      const connection = connectionDb();
+  
+      try {
+        // Contar la cantidad de registros con el idpublication dado
+        const result = await connection.query(
+          "SELECT COUNT(*) AS count FROM reaction WHERE idpublication = $1 AND user_id = $2",
+          [idpublication, iduser]
+        );
+  
+        // El resultado de la consulta contiene una propiedad "rows" que tiene la cantidad total
+        const totalCount = result.rows.length > 0 ? parseInt(result.rows[0].count) : 0;
+  
+        connection.end();
+        console.log('totalCount',totalCount)
+        resolve(totalCount);
+      } catch (err) {
+        console.error("Error while counting reactions", err);
+        connection.end();
+        reject(null);
+      }
+    });
+  },
+```
